@@ -23,6 +23,6 @@ class QuoteServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->binds('App\Contracts\QuoteContract', 'App\Services\QuoteService');
+        $this->app->bind('App\Contracts\QuoteContract', 'App\Services\QuoteService');
     }
 }

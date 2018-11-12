@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Request;
 
 class QuoteController extends Controller
 {
@@ -12,9 +13,9 @@ class QuoteController extends Controller
         $quoteContractRetriever = $quoteContract;
     }
 
-    public function postQuote()
+    public function postQuote(Request $request)
     {
-
+        return $this->quoteContractRetriever->postQuote($request);
     }
 
     public function getQuotes()
@@ -22,7 +23,12 @@ class QuoteController extends Controller
 
     }
 
-    public function putQuote()
+    public function putQuote(Request $request, $id)
+    {
+
+    }
+
+    public function deleteQuote($id)
     {
 
     }
