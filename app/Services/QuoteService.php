@@ -1,10 +1,10 @@
 <?php 
 namespace App\Services;
 
+use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Auth;
+use App\Models\Quote;
 use App\Contracts\QuoteContract;
-use Illuminate\Support\Facades\Auth;
-
-use App\Quote;
 
 class QuoteService implements QuoteContract
 {
@@ -19,7 +19,7 @@ class QuoteService implements QuoteContract
 
   public function getQuotes()
   {
-    $quotes = Quote()::all();
+    $quotes = Quote::all();
     $response = ['quotes' => $quotes];
     return response()->json($response, 200);
   }
