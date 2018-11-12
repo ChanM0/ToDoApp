@@ -1,13 +1,10 @@
-
 <?php 
 namespace App\Services;
 
-use App\Contracts\PostContract;
-use App\Post;
-use App\User;
+use App\Contracts\QuoteContract;
 use Illuminate\Support\Facades\Auth;
 
-class PostService implements PostContract
+class QuoteService implements QuoteContract
 {
 
 }
