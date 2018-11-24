@@ -19,4 +19,10 @@ class UserService implements UserContract
         return response()->json(['message' => 'Successfully created user.'], 201);
     }
 
+    public function signIn(Request $request)
+    {
+
+
+    }
+
 }

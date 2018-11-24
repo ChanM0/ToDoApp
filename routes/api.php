@@ -20,6 +20,7 @@ Route::delete('/quote/{id}', 'QuoteController@deleteQuote');
 
 
 Route::post('/user', 'UserController@signUp');
+Route::post('/user/signIn ', 'UserController@signIn');
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
