@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Request;
 // use App\Models\Quote;
 use App\Contracts\QuoteContract;
+use JWTAuth;
 
 
 class QuoteController extends Controller
 {
     protected $quoteContractRetriever;
+
     public function __construct(QuoteContract $quoteContract)
     {
         $this->quoteContractRetriever = $quoteContract;
@@ -18,6 +19,9 @@ class QuoteController extends Controller
 
     public function postQuote(Request $request)
     {
+        if (!$user = JWTAuth::parseToken()->authenticate()) {
+            return response()->json(['message' => 'User not found.'], 404);
+        }
         return $this->quoteContractRetriever->postQuote($request);
     }
 

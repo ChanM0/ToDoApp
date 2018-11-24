@@ -3,6 +3,14 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use Tymon\JWTAuth\Exceptions\JWTException;
+
+use Response;
+
+
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -14,6 +22,11 @@ class Handler extends ExceptionHandler
      */
     protected $dontReport = [
         //
+        \Illuminate\Auth\AuthenticationException::class,
+        \Illuminate\Auth\Access\AuthorizationException::class,
+        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Illuminate\Validation\ValidationException::class,
     ];
 
     /**
@@ -46,6 +59,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof TokenExpiredException) {
+            return Response::json(['error' => 'Token Expired'], $exception->getStatusCode());
+        } else if ($exception instanceof TokenInvalidException) {
+            return Response::json(['error' => 'Token Invalid'], $exception->getStatusCode());
+        } else if ($exception instanceof JWTException) {
+            return Response::json(['error' => 'Error Fetching Token'], $exception->getStatusCode());
+        }
         return parent::render($request, $exception);
     }
 }
