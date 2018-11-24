@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 |
  */
 
-Route::post('/quote', 'QuoteController@postQuote');
-Route::get('/quotes', 'QuoteController@getQuotes');
-Route::put('/quote/{id}', 'QuoteController@putQuote');
-Route::delete('/quote/{id}', 'QuoteController@deleteQuote');
+Route::middleware('auth.jwt')->post('/quote', 'QuoteController@postQuote');
+Route::middleware('auth.jwt')->get('/quotes', 'QuoteController@getQuotes');
+Route::middleware('auth.jwt')->put('/quote/{id}', 'QuoteController@putQuote');
+Route::middleware('auth.jwt')->delete('/quote/{id}', 'QuoteController@deleteQuote');
 
 
 Route::post('/user', 'UserController@signUp');

@@ -8,6 +8,7 @@ use App\Contracts\QuoteContract;
 use JWTAuth;
 
 
+
 class QuoteController extends Controller
 {
     protected $quoteContractRetriever;
@@ -19,10 +20,8 @@ class QuoteController extends Controller
 
     public function postQuote(Request $request)
     {
-        if (!$user = JWTAuth::parseToken()->authenticate()) {
-            return response()->json(['message' => 'User not found.'], 404);
-        }
-        return $this->quoteContractRetriever->postQuote($request);
+        $user = JWTAuth::parseToken()->toUser();
+        return $this->quoteContractRetriever->postQuote($request, $user);
     }
 
     public function getQuotes()
