@@ -23,6 +23,6 @@ class Cors
             // Options is an extra request that the browser generates and is sent
             ->header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS')
             // Access-Control-Allow-Headers allows certain headers  
-            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            ->header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
     }
 }
