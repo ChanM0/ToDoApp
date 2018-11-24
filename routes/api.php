@@ -18,6 +18,9 @@ Route::get('/quotes', 'QuoteController@getQuotes');
 Route::put('/quote/{id}', 'QuoteController@putQuote');
 Route::delete('/quote/{id}', 'QuoteController@deleteQuote');
 
+
+Route::post('/user', 'UserController@signUp');
+
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
