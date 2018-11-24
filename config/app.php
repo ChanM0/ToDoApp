@@ -163,7 +163,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        /** JWT PACKAGE */
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -172,9 +173,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /** New service providers for the contract service flow  */
         App\Providers\QuoteServiceProvider::class,
         App\Providers\UserServiceProvider::class,
-
     ],
 
     /*
@@ -189,7 +191,6 @@ return [
      */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -224,6 +225,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /** New facade */
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
     ],
-
 ];
